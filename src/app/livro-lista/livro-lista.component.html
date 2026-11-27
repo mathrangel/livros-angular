@@ -1,1 +1,64 @@
-<p>livro-lista works!</p>
+<main class="container py-5">
+  <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+    <div>
+      <h1 class="mb-1">Catálogo de Livros</h1>
+      <p class="text-muted mb-0">{{ livros.length }} livro(s) cadastrado(s)</p>
+    </div>
+    <div class="d-flex gap-2">
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-primary" [class.active]="!somenteFavoritos" (click)="somenteFavoritos = false">Todos</button>
+        <button type="button" class="btn btn-outline-primary" [class.active]="somenteFavoritos" (click)="somenteFavoritos = true">
+          <i class="bi bi-star-fill"></i> Favoritos
+        </button>
+      </div>
+      <a class="btn btn-primary" routerLink="/dados">
+        <i class="bi bi-plus-lg"></i> Novo livro
+      </a>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th class="ps-4">Título</th>
+            <th>Resumo</th>
+            <th>Editora</th>
+            <th class="pe-4"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="position-relative" *ngFor="let livro of livrosExibidos">
+            <td class="ps-4">
+              <div class="d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-link p-0 text-warning fs-5" (click)="alternarFavorito(livro.codigo)" [title]="isFavorito(livro.codigo) ? 'Remover dos favoritos' : 'Favoritar'">
+                  <i class="bi" [ngClass]="isFavorito(livro.codigo) ? 'bi-star-fill' : 'bi-star'"></i>
+                </button>
+                <div>
+                  <div class="fw-semibold">{{ livro.titulo }}</div>
+                  <ul class="list-inline small text-muted text-nowrap mb-0">
+                    <li class="list-inline-item me-1"><i class="bi bi-person"></i></li>
+                    <li class="list-inline-item me-1" *ngFor="let autor of livro.autores; let ultimo = last">{{ autor }}{{ ultimo ? '' : ' ·' }}</li>
+                  </ul>
+                </div>
+              </div>
+              <button type="button" class="btn btn-outline-danger btn-sm position-absolute top-50 end-0 translate-middle-y me-4" (click)="excluir(livro.codigo)" title="Excluir">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+            <td class="text-muted small">{{ livro.resumo }}</td>
+            <td><span class="badge bg-secondary">{{ obterNome(livro.codEditora) }}</span></td>
+            <td class="pe-4" style="width: 80px"></td>
+          </tr>
+          <tr *ngIf="livrosExibidos.length === 0">
+            <td colspan="4" class="text-center text-muted py-5">
+              <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+              {{ somenteFavoritos ? 'Nenhum livro favoritado.' : 'Nenhum livro cadastrado.' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>

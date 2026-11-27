@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LivroListaComponent } from './livro-lista/livro-lista.component';
+import { LivroDadosComponent } from './livro-dados/livro-dados.component';
+import { AutorListaComponent } from './autor-lista/autor-lista.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'lista', component: LivroListaComponent },
+  { path: 'dados', component: LivroDadosComponent },
+  { path: 'autores', component: AutorListaComponent },
+  { path: '', redirectTo: '/lista', pathMatch: 'full' },
+  { path: '**', redirectTo: '/lista' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

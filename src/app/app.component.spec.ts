@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('livros-angular');
   });
 
-  it('should render title', () => {
+  it('should render navbar brand', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, livros-angular');
+    expect(compiled.querySelector('.navbar-brand')?.textContent).toContain('Catálogo de Livros');
   });
 });

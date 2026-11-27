@@ -1,1 +1,41 @@
-<p>livro-dados works!</p>
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="mb-1">Dados do Livro</h1>
+      <p class="text-muted mb-4">Preencha as informações para incluir um novo livro no catálogo.</p>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <form (submit)="incluir()" ngNativeValidate>
+            <div class="form-floating mb-3">
+              <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Título" [(ngModel)]="livro.titulo" required>
+              <label for="titulo">Título</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea id="resumo" name="resumo" class="form-control" placeholder="Resumo" style="height: 110px" [(ngModel)]="livro.resumo"></textarea>
+              <label for="resumo">Resumo</label>
+            </div>
+            <div class="form-floating mb-3">
+              <select id="editora" name="editora" class="form-select" [(ngModel)]="livro.codEditora" required>
+                <option value="" disabled>Selecione uma editora</option>
+                <option *ngFor="let editora of editoras" [value]="editora.codEditora">{{ editora.nome }}</option>
+              </select>
+              <label for="editora">Editora</label>
+            </div>
+            <div class="form-floating mb-1">
+              <textarea id="autores" name="autores" class="form-control" placeholder="Autores" style="height: 110px" [(ngModel)]="autoresForm"></textarea>
+              <label for="autores">Autores</label>
+            </div>
+            <div class="form-text mb-4">Um autor por linha.</div>
+            <div class="d-flex justify-content-end gap-2">
+              <a class="btn btn-outline-secondary" routerLink="/lista">Cancelar</a>
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-check-lg"></i> Salvar Dados
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

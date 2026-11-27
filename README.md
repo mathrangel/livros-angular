@@ -1,59 +1,46 @@
-# LivrosAngular
+# Catálogo de Livros (livros-angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Trabalho prático da disciplina **DGT2809 Aprofundamento em Desenvolvimento Front-End** (Estácio).
 
-## Development server
+**Aluno:** Matheus Rangel Lanatovitz da Silva · **Matrícula:** 202303287755
 
-To start a local development server, run:
+## Funcionalidades
 
-```bash
-ng serve
-```
+- Listagem de livros com título, resumo, editora e autores
+- Exclusão de livros
+- Cadastro de livros com validação HTML 5 (`ngNativeValidate`)
+- Navegação entre páginas com Angular Router (`/lista`, `/dados`, `/autores`)
+- Favoritar livros e filtrar apenas os favoritos
+- Página de autores com os livros de cada autor
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tecnologias
 
-## Code scaffolding
+- Angular 19 (NgModule, FormsModule, RouterModule)
+- TypeScript
+- Bootstrap 5.3 (tema Bootswatch Lux) e Bootstrap Icons
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Estrutura
 
-```bash
-ng generate component component-name
-```
+| Arquivo | Descrição |
+|---|---|
+| `src/app/livro.ts` / `editora.ts` | Entidades Livro e Editora |
+| `src/app/controle-livros.service.ts` | Serviço com `obterLivros`, `incluir` e `excluir` |
+| `src/app/controle-editora.service.ts` | Serviço com `getEditoras` e `getNomeEditora` |
+| `src/app/livro-lista/` | Componente de listagem |
+| `src/app/livro-dados/` | Componente de cadastro |
+| `src/app/autor-lista/` | Componente de livros por autor |
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Como executar
 
 ```bash
-ng test
+npm install
+npx ng serve
 ```
 
-## Running end-to-end tests
+Acesse http://localhost:4200/ no navegador.
 
-For end-to-end (e2e) testing, run:
+## Testes
 
 ```bash
-ng e2e
+npx ng test
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
